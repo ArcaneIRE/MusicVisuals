@@ -1,8 +1,6 @@
 # Music Visualiser Project
 
-Name:
-
-Student Number: 
+Collaborators: David Corcoran (D22126022) & Kai Reid (C21745961)
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
