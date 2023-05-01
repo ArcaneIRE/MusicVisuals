@@ -5,6 +5,7 @@ import ie.tudublin.*;
 public class MyVisual extends Visual {
     WaveForm wf;
     AudioBandsVisual abv;
+    Layers layers;
 
     public void settings() {
         size(1024, 500);
@@ -27,6 +28,8 @@ public class MyVisual extends Visual {
 
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
+
+        layers = new Layers(this);
     }
 
     public void keyPressed() {
@@ -51,5 +54,7 @@ public class MyVisual extends Visual {
         calculateAverageAmplitude();
         wf.render();
         abv.render();
+
+        layers.renderAll();
     }
 }
