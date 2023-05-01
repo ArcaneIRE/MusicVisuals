@@ -28,12 +28,14 @@ public class PineTree {
     }
 
     public void render() {
+        int overlap = 3;
+
         mv.pushMatrix();
         mv.translate(x, y);
         mv.fill(0, 50, 0);
 
         for (int i = 0; i < numTriangles; i++) {
-            int offsetY = (maxTriangles * triangleHeight) - (i * triangleHeight);
+            int offsetY = (maxTriangles * (triangleHeight - overlap)) - (i * (triangleHeight - overlap));
             int offsetX = (treeWidth / 2) * i / numTriangles;
             int currentWidth = treeWidth - offsetX * 2;
 
