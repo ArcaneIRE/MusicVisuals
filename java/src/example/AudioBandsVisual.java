@@ -1,6 +1,7 @@
 package example;
 
 import processing.core.*;
+import visualisation.MyVisual;
 
 // This is an example of a visual that uses the audio bands
 public class AudioBandsVisual {

@@ -1,4 +1,4 @@
-package example;
+package visualisation;
 
 import java.util.ArrayList;
 import processing.core.PApplet;
