@@ -7,6 +7,8 @@ public class PineTree {
     int maxTriangles;
     int treeWidth;
     int triangleHeight;
+    int overlap;
+    int greenShade;
 
     public PineTree(MyVisual mv, int x, int y, int maxTriangles, int treeWidth, int triangleHeight) {
         this.mv = mv;
@@ -16,6 +18,8 @@ public class PineTree {
         this.maxTriangles = maxTriangles;
         this.treeWidth = treeWidth;
         this.triangleHeight = triangleHeight;
+        this.overlap = 3;
+        this.greenShade = (int) mv.random(35, 60);
     }
 
     public void grow() {
@@ -28,11 +32,10 @@ public class PineTree {
     }
 
     public void render() {
-        int overlap = 3;
 
         mv.pushMatrix();
         mv.translate(x, y);
-        mv.fill(0, 50, 0);
+        mv.fill(0, greenShade, 0);
 
         for (int i = 0; i < numTriangles; i++) {
             int offsetY = (maxTriangles * (triangleHeight - overlap)) - (i * (triangleHeight - overlap));
