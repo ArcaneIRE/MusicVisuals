@@ -3,11 +3,13 @@ package visualisation;
 import example.AudioBandsVisual;
 import example.WaveForm;
 import ie.tudublin.*;
+import java.util.ArrayList;
 
 public class MyVisual extends Visual {
     WaveForm wf;
     AudioBandsVisual abv;
     Layers layers;
+    ArrayList<PineTree> pineTrees;
 
     public void settings() {
         size(1024, 500);
@@ -23,7 +25,7 @@ public class MyVisual extends Visual {
         startMinim();
 
         // Call loadAudio to load an audio file to process
-        // loadAudio("heroplanet.mp3");
+        loadAudio("heroplanet.mp3");
 
         // Call this instead to read audio from the microphone
         startListening();
@@ -32,12 +34,20 @@ public class MyVisual extends Visual {
         abv = new AudioBandsVisual(this);
 
         layers = new Layers(this);
+        pineTrees = new ArrayList<>();
     }
 
     public void keyPressed() {
         if (key == ' ') {
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
+        } else if (key == '+') {
+            int x = (int) random(width);
+            int y = (int) random(height - 200) + 100;
+            int maxTriangles = (int) random(5, 10);
+            int treeWidth = 100;
+            int triangleHeight = 12;
+            pineTrees.add(new PineTree(this, x, y, maxTriangles, treeWidth, triangleHeight));
         }
     }
 
@@ -56,7 +66,9 @@ public class MyVisual extends Visual {
         calculateAverageAmplitude();
         wf.render();
         abv.render();
-
-        layers.renderAll();
+        for (PineTree pineTree : pineTrees) {
+            pineTree.grow();
+            pineTree.render();
+        }
     }
 }

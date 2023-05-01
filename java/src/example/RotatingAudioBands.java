@@ -29,7 +29,7 @@ public class RotatingAudioBands extends Visual {
         startMinim();
         loadAudio("heroplanet.mp3");
         getAudioPlayer().play();
-        // startListening();
+        startListening();
 
     }
 
