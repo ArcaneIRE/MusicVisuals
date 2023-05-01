@@ -1,13 +1,9 @@
 package visualisation;
 
-import example.AudioBandsVisual;
-import example.WaveForm;
 import ie.tudublin.*;
 import java.util.ArrayList;
 
 public class MyVisual extends Visual {
-    WaveForm wf;
-    AudioBandsVisual abv;
     Layers layers;
     ArrayList<PineTree> pineTrees;
 
@@ -29,9 +25,6 @@ public class MyVisual extends Visual {
 
         // Call this instead to read audio from the microphone
         startListening();
-
-        wf = new WaveForm(this);
-        abv = new AudioBandsVisual(this);
 
         layers = new Layers(this);
         pineTrees = new ArrayList<>();
@@ -64,8 +57,6 @@ public class MyVisual extends Visual {
 
         // Call this is you want to get the average amplitude
         calculateAverageAmplitude();
-        wf.render();
-        abv.render();
         for (PineTree pineTree : pineTrees) {
             pineTree.grow();
             pineTree.render();
