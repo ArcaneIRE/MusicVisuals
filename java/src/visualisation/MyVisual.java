@@ -1,12 +1,8 @@
 package visualisation;
 
-import example.AudioBandsVisual;
-import example.WaveForm;
 import ie.tudublin.*;
 
 public class MyVisual extends Visual {
-    WaveForm wf;
-    AudioBandsVisual abv;
     Layers layers;
 
     public void settings() {
@@ -27,9 +23,6 @@ public class MyVisual extends Visual {
 
         // Call this instead to read audio from the microphone
         startListening();
-
-        wf = new WaveForm(this);
-        abv = new AudioBandsVisual(this);
 
         layers = new Layers(this);
     }
@@ -54,8 +47,6 @@ public class MyVisual extends Visual {
 
         // Call this is you want to get the average amplitude
         calculateAverageAmplitude();
-        wf.render();
-        abv.render();
 
         layers.renderAll();
     }
