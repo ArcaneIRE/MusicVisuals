@@ -7,7 +7,7 @@ public abstract class RenderObject {
     PVector pos;
     PApplet p;
 
-    public RenderObject(float x, float y, PApplet p) {
+    public RenderObject(PApplet p, float x, float y) {
         this.pos = new PVector(x, y);
         this.p = p;
     }

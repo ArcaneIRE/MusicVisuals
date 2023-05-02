@@ -1,9 +1,10 @@
 package visualisation;
 
 import ie.tudublin.*;
+import java.util.ArrayList;
 
 public class MyVisual extends Visual {
-    Layers layers;
+    private ArrayList<Layer> layers;
 
     public void settings() {
         size(1024, 500);
@@ -24,7 +25,7 @@ public class MyVisual extends Visual {
         // Call this instead to read audio from the microphone
         startListening();
 
-        layers = new Layers(this);
+        layers = new ArrayList<Layer>();
     }
 
     public void keyPressed() {
@@ -48,6 +49,9 @@ public class MyVisual extends Visual {
         // Call this is you want to get the average amplitude
         calculateAverageAmplitude();
 
-        layers.renderAll();
+        for (Layer layer : layers) {
+            layer.draw();
+            layer.update();
+        }
     }
 }
