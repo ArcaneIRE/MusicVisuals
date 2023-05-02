@@ -12,14 +12,14 @@ public class Layer {
     }
 
     public void draw() {
-        for (int i = renderObjects.size() - 1; i >= 0; i--) {
+        for (int i = 0; i < renderObjects.size(); i++) {
             RenderObject ro = renderObjects.get(i);
             ro.render();
         }
     }
 
     public void update() {
-        for (int i = 0; i < renderObjects.size(); i++) {
+        for (int i = renderObjects.size() - 1; i >= 0; i--) {
             RenderObject ro = renderObjects.get(i);
             ro.update();
         }
