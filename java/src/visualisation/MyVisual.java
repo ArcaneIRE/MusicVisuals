@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class MyVisual extends Visual {
     private ArrayList<Layer> layers;
-    ArrayList<PineTree> pineTrees;
     Sun sun;
     Bird flock[];
 
@@ -28,13 +27,16 @@ public class MyVisual extends Visual {
         layers = new ArrayList<Layer>();
 
         layers.add(new Layer(this));
+        layers.get(0).renderObjects.add(new Land(this, 0, 13 * (height / 20), new Color(130, 68, 70)));
         layers.add(new Layer(this));
+        layers.get(1).renderObjects.add(new Land(this, 0, 14 * (height / 20), new Color(130, 71, 60)));
         layers.add(new Layer(this));
+        layers.get(2).renderObjects.add(new Land(this, 0, 15 * (height / 20), new Color(130, 74, 50)));
+        layers.add(new Layer(this));
+        layers.get(3).renderObjects.add(new Land(this, 0, 16 * (height / 20), new Color(130, 77, 40)));
+        layers.add(new Layer(this));
+        layers.get(4).renderObjects.add(new Land(this, 0, 17 * (height / 20), new Color(130, 80, 30)));
 
-        layers.get(0).renderObjects.add(new Land(this, 0, 2 * (height / 5), new Color(130, 80, 70)));
-        layers.get(1).renderObjects.add(new Land(this, 0, 3 * (height / 5), new Color(130, 80, 60)));
-        layers.get(2).renderObjects.add(new Land(this, 0, 4 * (height / 5), new Color(130, 80, 50)));
-        pineTrees = new ArrayList<>();
         sun = new Sun(this, width - 300, height / 10, 80, 24);
         flock = new Bird[5];
         flock[0] = new Bird(this, 400, 100);
@@ -45,13 +47,6 @@ public class MyVisual extends Visual {
     }
 
     public void keyPressed() {
-        if (key == '+') {
-            int x = (int) random(width);
-            int y = (int) random(height - 200) + 100;
-            int size = (int) random(5, 10);
-            int height = 15;
-            pineTrees.add(new PineTree(this, x, y, size, height));
-        }
     }
 
     public void draw() {
@@ -71,11 +66,6 @@ public class MyVisual extends Visual {
         for (Layer layer : layers) {
             layer.draw();
             layer.update();
-        }
-
-        for (PineTree pineTree : pineTrees) {
-            pineTree.grow();
-            pineTree.render();
         }
 
         pushStyle();
