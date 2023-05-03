@@ -10,6 +10,8 @@ public class MyVisual extends Visual {
     River river;
 
     int currentBackgroundColor;
+    float sunsetStartTime = 120.0f;
+    float sunsetDuration = 27.0f;
 
     public void settings() {
         size(1024, 500);
@@ -57,8 +59,6 @@ public class MyVisual extends Visual {
 
     public void updateBackgroundColor() {
         float elapsedTime = getAudioPlayer().position() / 1000.0f; // Get elapsed time in seconds
-        float sunsetStartTime = 120.0f;
-        float sunsetDuration = 27.0f;
 
         if (elapsedTime >= sunsetStartTime && elapsedTime <= sunsetStartTime + sunsetDuration) {
             float progress = (elapsedTime - sunsetStartTime) / sunsetDuration;
@@ -72,8 +72,6 @@ public class MyVisual extends Visual {
 
     public void updateSunPosition() {
         float elapsedTime = getAudioPlayer().position() / 1000.0f; // Get elapsed time in seconds
-        float sunsetStartTime = 120.0f;
-        float sunsetDuration = 27.0f;
 
         if (elapsedTime >= sunsetStartTime && elapsedTime <= sunsetStartTime + sunsetDuration) {
             float progress = (elapsedTime - sunsetStartTime) / sunsetDuration;
