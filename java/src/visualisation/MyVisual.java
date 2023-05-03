@@ -33,15 +33,15 @@ public class MyVisual extends Visual {
         layers = new ArrayList<Layer>();
 
         layers.add(new Layer(this));
-        layers.get(0).renderObjects.add(new Land(this, 0, 13 * (height / 20), new Color(130, 68, 70)));
+        layers.get(0).renderObjects.add(new Land(this, 0, 13 * (height / 20), new Color(130, 68, 70), 0));
         layers.add(new Layer(this));
-        layers.get(1).renderObjects.add(new Land(this, 0, 14 * (height / 20), new Color(130, 71, 60)));
+        layers.get(1).renderObjects.add(new Land(this, 0, 14 * (height / 20), new Color(130, 71, 60), 1));
         layers.add(new Layer(this));
-        layers.get(2).renderObjects.add(new Land(this, 0, 15 * (height / 20), new Color(130, 74, 50)));
+        layers.get(2).renderObjects.add(new Land(this, 0, 15 * (height / 20), new Color(130, 74, 50), 2));
         layers.add(new Layer(this));
-        layers.get(3).renderObjects.add(new Land(this, 0, 16 * (height / 20), new Color(130, 77, 40)));
+        layers.get(3).renderObjects.add(new Land(this, 0, 16 * (height / 20), new Color(130, 77, 40), 3));
         layers.add(new Layer(this));
-        layers.get(4).renderObjects.add(new Land(this, 0, 17 * (height / 20), new Color(130, 80, 30)));
+        layers.get(4).renderObjects.add(new Land(this, 0, 17 * (height / 20), new Color(130, 80, 30), 4));
 
         sun = new Sun(this, width - 300, height / 10, 80, 24);
         flock = new Bird[5];

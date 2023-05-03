@@ -9,11 +9,13 @@ public class Land extends RenderObject {
     PGraphics buffer;
     Color color;
     ArrayList<PineTree> trees;
+    int layerNo;
 
-    public Land(MyVisual mv, float x, float y, Color color) {
+    public Land(MyVisual mv, float x, float y, Color color, int layerNo) {
         super(mv, x, y);
         this.color = color;
         this.heightMap = new float[mv.width];
+        this.layerNo = layerNo;
         trees = new ArrayList<>();
 
         setup();
@@ -67,7 +69,7 @@ public class Land extends RenderObject {
 
     public void spawnTree() {
         int x = (int) mv.random(mv.width);
-        int size = (int) mv.random(2, 8);
+        int size = (int) mv.random(0, 6) + 2 * layerNo;
         int randomOffset = (int) mv.random(0, 10);
         int y = (int) heightMap[x] + randomOffset;
         trees.add(new PineTree(mv, x, y, size, 15, this.color));
