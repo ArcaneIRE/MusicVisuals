@@ -63,10 +63,8 @@ public class MyVisual extends Visual {
         if (elapsedTime >= sunsetStartTime && elapsedTime <= sunsetStartTime + sunsetDuration) {
             float progress = (elapsedTime - sunsetStartTime) / sunsetDuration;
             int startColor = color(200, 60, 100);
-            int endColor = color(0, 0, 0);
+            int endColor = color(340, 10, 10);
             currentBackgroundColor = lerpColor(startColor, endColor, progress);
-        } else if (elapsedTime > sunsetStartTime + sunsetDuration) {
-            currentBackgroundColor = color(0, 0, 0);
         }
     }
 
