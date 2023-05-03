@@ -7,6 +7,7 @@ public class MyVisual extends Visual {
     private ArrayList<Layer> layers;
     ArrayList<PineTree> pineTrees;
     Sun sun;
+    Bird flock[];
 
     public void settings() {
         size(1024, 500);
@@ -23,6 +24,7 @@ public class MyVisual extends Visual {
         getAudioPlayer().play();
 
         colorMode(HSB, 360, 100, 100);
+
         layers = new ArrayList<Layer>();
 
         layers.add(new Layer(this));
@@ -33,8 +35,13 @@ public class MyVisual extends Visual {
         layers.get(1).renderObjects.add(new Land(this, 0, 3 * (height / 5), new Color(130, 80, 60)));
         layers.get(2).renderObjects.add(new Land(this, 0, 4 * (height / 5), new Color(130, 80, 50)));
         pineTrees = new ArrayList<>();
-
         sun = new Sun(this, width - 300, height / 10, 80, 24);
+        flock = new Bird[5];
+        flock[0] = new Bird(this, 400, 100);
+        flock[1] = new Bird(this, 350, 75);
+        flock[2] = new Bird(this, 350, 125);
+        flock[3] = new Bird(this, 300, 50);
+        flock[4] = new Bird(this, 300, 150);
     }
 
     public void keyPressed() {
@@ -75,5 +82,9 @@ public class MyVisual extends Visual {
         sun.render();
         popStyle();
 
+        for (Bird bird : flock) {
+            bird.render();
+            bird.update();
+        }
     }
 }
