@@ -99,9 +99,7 @@ public class MyVisual extends Visual {
         calculateAverageAmplitude();
 
         updateSunPosition();
-        pushStyle();
         sun.render();
-        popStyle();
 
         for (Layer layer : layers) {
             layer.draw();
