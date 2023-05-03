@@ -19,7 +19,7 @@ public class PineTree {
         this.treeWidth = treeWidth;
         this.triangleHeight = triangleHeight;
         this.overlap = 3;
-        this.greenShade = (int) mv.random(35, 60);
+        this.greenShade = (int) mv.random(35, 55);
     }
 
     public void grow() {
@@ -35,7 +35,9 @@ public class PineTree {
 
         mv.pushMatrix();
         mv.translate(x, y);
+        mv.colorMode(MyVisual.RGB);
         mv.fill(0, greenShade, 0);
+        mv.colorMode(MyVisual.HSB);
 
         for (int i = 0; i < numTriangles; i++) {
             int offsetY = (maxTriangles * (triangleHeight - overlap)) - (i * (triangleHeight - overlap));
