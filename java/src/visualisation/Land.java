@@ -2,16 +2,19 @@ package visualisation;
 
 import processing.core.PApplet;
 import processing.core.PGraphics;
+import java.util.ArrayList;
 
 public class Land extends RenderObject {
     float heightMap[];
     PGraphics buffer;
     Color color;
+    ArrayList<PineTree> trees;
 
     public Land(MyVisual mv, float x, float y, Color color) {
         super(mv, x, y);
         this.color = color;
         this.heightMap = new float[mv.width];
+        trees = new ArrayList<>();
 
         setup();
     }
@@ -33,9 +36,19 @@ public class Land extends RenderObject {
 
     public void render() {
         mv.image(buffer, 0, 0);
+
+        for (PineTree tree : trees) {
+            if ((int) mv.random(100) == 0) {
+                tree.grow();
+            }
+            tree.render();
+        }
     }
 
     public void update() {
+        if (mv.random(3) < mv.getSmoothedAmplitude()) {
+            spawnTree();
+        }
     }
 
     float noiseOffset = mv.random(0, 100);
@@ -50,6 +63,14 @@ public class Land extends RenderObject {
             heightMap[i] = height;
             noiseOffset += degreeOfChange;
         }
+    }
+
+    public void spawnTree() {
+        int x = (int) mv.random(mv.width);
+        int size = (int) mv.random(5, 10);
+        int randomOffset = (int) mv.random(10, 200);
+        int y = (int) pos.y - (int) heightMap[x] + randomOffset;
+        trees.add(new PineTree(mv, x, y, size, 15, this.color));
     }
 
 }
