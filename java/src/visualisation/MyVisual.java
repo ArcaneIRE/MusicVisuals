@@ -72,7 +72,7 @@ public class MyVisual extends Visual {
     }
 
     public void spawnBirds(float elapsedTime) {
-        if (elapsedTime > 23f && flock == null) {
+        if (elapsedTime > 0f && flock == null) {
             flock = new Bird[5];
             flock[0] = new Bird(this, -10, 200);
             flock[1] = new Bird(this, -40, 175);
@@ -83,7 +83,7 @@ public class MyVisual extends Visual {
     }
 
     public void renderBirds(float elapsedTime) {
-        if (elapsedTime > 23f) {
+        if (elapsedTime > 0f) {
             for (Bird bird : flock) {
                 bird.render();
                 bird.update();

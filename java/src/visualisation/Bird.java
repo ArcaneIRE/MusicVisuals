@@ -2,10 +2,11 @@ package visualisation;
 
 public class Bird extends RenderObject {
     boolean isFlapping;
+    int initialHeight;
 
     public Bird(MyVisual mv, int x, int y) {
         super(mv, x, y);
-        isFlapping = false;
+        this.initialHeight = y;
     }
 
     public void render() {
@@ -29,16 +30,15 @@ public class Bird extends RenderObject {
 
     public void update() {
         pos.x += 1;
-        // int bands = mv.getBands().length;
-        // int bandIndex = (int) mv.map(i, 0, rayCount, 0, bands);
-        // float bandValue = mv.getSmoothedBands()[bandIndex];
 
-        float currentBandValue = mv.getSmoothedBands()[5];
-        if (currentBandValue > 6 && previousBandValue > 6) {
+        float averageAmp = mv.getSmoothedAmplitude();
+        float heightChange = MyVisual.map((averageAmp * 100), 1, 10, -25, +25);
+        pos.y = initialHeight + heightChange;
+
+        if (((int) (mv.getAudioPlayer().position() / 1000.0f)) % 4 == 0) {
             isFlapping = true;
         } else {
             isFlapping = false;
         }
-        previousBandValue = currentBandValue;
     }
 }
