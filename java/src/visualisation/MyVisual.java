@@ -20,7 +20,7 @@ public class MyVisual extends Visual {
         startMinim();
 
         // Call loadAudio to load an audio file to process
-        loadAudio("songs\\primavera_short.mp3");
+        loadAudio("primavera_short.mp3");
 
         colorMode(HSB, 360, 100, 100);
         layers = new ArrayList<Layer>();
