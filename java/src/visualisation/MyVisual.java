@@ -10,6 +10,8 @@ public class MyVisual extends Visual {
     River river;
 
     int currentBackgroundColor;
+
+    float elapsedTime;
     float sunsetStartTime = 128.0f;
     float sunsetDuration = 27.0f;
 
@@ -45,22 +47,13 @@ public class MyVisual extends Visual {
 
         sun = new Sun(this, width - 300, height / 10, 80, 24);
 
-        flock = new Bird[5];
-        flock[0] = new Bird(this, -400, 100);
-        flock[1] = new Bird(this, -450, 75);
-        flock[2] = new Bird(this, -450, 125);
-        flock[3] = new Bird(this, -500, 50);
-        flock[4] = new Bird(this, -500, 150);
-
         river = new River(this, 0, 18 * (height / 19), 40, 50);
     }
 
     public void keyPressed() {
     }
 
-    public void updateBackgroundColor() {
-        float elapsedTime = getAudioPlayer().position() / 1000.0f; // Get elapsed time in seconds
-
+    public void updateBackgroundColor(float elapsedTime) {
         if (elapsedTime >= sunsetStartTime && elapsedTime <= sunsetStartTime + sunsetDuration) {
             float progress = (elapsedTime - sunsetStartTime) / sunsetDuration;
             int startColor = color(200, 60, 100);
@@ -69,9 +62,7 @@ public class MyVisual extends Visual {
         }
     }
 
-    public void updateSunPosition() {
-        float elapsedTime = getAudioPlayer().position() / 1000.0f; // Get elapsed time in seconds
-
+    public void updateSunPosition(float elapsedTime) {
         if (elapsedTime >= sunsetStartTime && elapsedTime <= sunsetStartTime + sunsetDuration) {
             float progress = (elapsedTime - sunsetStartTime) / sunsetDuration;
             int startY = height / 10;
@@ -81,7 +72,9 @@ public class MyVisual extends Visual {
     }
 
     public void draw() {
-        updateBackgroundColor();
+        elapsedTime = getAudioPlayer().position() / 1000.0f; // Get elapsed time in seconds
+
+        updateBackgroundColor(elapsedTime);
         background(currentBackgroundColor);
         try {
             // Call this if you want to use FFT data
@@ -95,7 +88,7 @@ public class MyVisual extends Visual {
         // Call this is you want to get the average amplitude
         calculateAverageAmplitude();
 
-        updateSunPosition();
+        updateSunPosition(elapsedTime);
         sun.render();
 
         for (Layer layer : layers) {
