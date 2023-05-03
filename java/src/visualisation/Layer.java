@@ -12,8 +12,10 @@ public class Layer {
 
     public void draw() {
         for (int i = 0; i < renderObjects.size(); i++) {
+            mv.pushStyle();
             RenderObject ro = renderObjects.get(i);
             ro.render();
+            mv.popStyle();
         }
     }
 

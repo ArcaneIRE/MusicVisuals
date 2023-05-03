@@ -9,10 +9,11 @@ public class Bird extends RenderObject {
     }
 
     public void render() {
+        mv.pushStyle();
         mv.pushMatrix();
         mv.translate(pos.x, pos.y);
-        mv.color(255);
         mv.fill(0, 255, 0);
+        mv.stroke(0, 255, 0);
         mv.strokeWeight(5);
         mv.line(-10, 0, 10, 0);
         if (isFlapping) {
@@ -20,6 +21,7 @@ public class Bird extends RenderObject {
         } else {
             mv.quad(-5, 0, 5, 0, -3, -10, -7, -10);
         }
+        mv.popStyle();
         mv.popMatrix();
     }
 

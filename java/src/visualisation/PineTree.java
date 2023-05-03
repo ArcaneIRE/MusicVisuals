@@ -32,7 +32,7 @@ public class PineTree {
     }
 
     public void render() {
-
+        mv.pushStyle();
         mv.pushMatrix();
         mv.translate(x, y);
         mv.fill(color.hue, color.sat, color.bri);
@@ -47,6 +47,7 @@ public class PineTree {
                     offsetY - triangleHeight);
         }
 
+        mv.pushStyle();
         mv.popMatrix();
     }
 }

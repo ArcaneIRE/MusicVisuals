@@ -21,6 +21,7 @@ public class Sun {
     }
 
     public void render() {
+        mv.pushStyle();
         // Draw sun
         mv.fill(60, 80, 100);
         mv.noStroke();
@@ -46,6 +47,7 @@ public class Sun {
             mv.strokeWeight(2);
             mv.line(0, 0, rayX, rayY);
         }
+        mv.popStyle();
         mv.popMatrix();
     }
 }
