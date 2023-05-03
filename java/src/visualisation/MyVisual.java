@@ -76,8 +76,6 @@ public class MyVisual extends Visual {
             int startY = height / 10;
             int endY = height - 80 * 2;
             sun.y = (int) lerp(startY, endY, progress);
-        } else if (elapsedTime > sunsetStartTime + sunsetDuration) {
-            sun.y = height - 80 * 2;
         }
     }
 
