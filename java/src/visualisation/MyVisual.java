@@ -7,6 +7,7 @@ public class MyVisual extends Visual {
     private ArrayList<Layer> layers;
     Sun sun;
     Bird flock[];
+    River river;
 
     public void settings() {
         size(1024, 500);
@@ -44,6 +45,8 @@ public class MyVisual extends Visual {
         flock[2] = new Bird(this, 350, 125);
         flock[3] = new Bird(this, 300, 50);
         flock[4] = new Bird(this, 300, 150);
+
+        river = new River(this, 0, 18 * (height / 19), 40, 50);
     }
 
     public void keyPressed() {
@@ -76,5 +79,7 @@ public class MyVisual extends Visual {
             bird.render();
             bird.update();
         }
+        river.render();
+        river.update();
     }
 }
