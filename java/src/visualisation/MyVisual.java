@@ -10,7 +10,7 @@ public class MyVisual extends Visual {
     River river;
 
     int currentBackgroundColor;
-    float sunsetStartTime = 120.0f;
+    float sunsetStartTime = 128.0f;
     float sunsetDuration = 27.0f;
 
     public void settings() {
