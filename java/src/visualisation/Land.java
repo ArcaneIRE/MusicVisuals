@@ -67,9 +67,9 @@ public class Land extends RenderObject {
 
     public void spawnTree() {
         int x = (int) mv.random(mv.width);
-        int size = (int) mv.random(2, 13);
-        int randomOffset = (int) mv.random(0, 20);
-        int y = (int) heightMap[x] - randomOffset - 10;
+        int size = (int) mv.random(2, 8);
+        int randomOffset = (int) mv.random(0, 10);
+        int y = (int) heightMap[x] + randomOffset;
         trees.add(new PineTree(mv, x, y, size, 15, this.color));
     }
 

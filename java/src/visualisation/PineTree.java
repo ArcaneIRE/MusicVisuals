@@ -39,12 +39,13 @@ public class PineTree {
         mv.noStroke();
 
         for (int i = 0; i < numTriangles; i++) {
-            int offsetY = (maxTriangles * (triangleHeight - overlap)) - (i * (triangleHeight - overlap));
-            int offsetX = (treeWidth / 2) * i / numTriangles;
-            int currentWidth = treeWidth - offsetX * 2;
+            int triangleOffset = triangleHeight - overlap;
+            int y = -1 * (i * triangleOffset);
+            int widthDecrease = i * 10;
+            int currentWidth = treeWidth - widthDecrease;
+            int halfCurrentWidth = currentWidth / 2;
 
-            mv.triangle(offsetX, offsetY, offsetX + currentWidth, offsetY, offsetX + currentWidth / 2,
-                    offsetY - triangleHeight);
+            mv.triangle(0 - halfCurrentWidth, y, 0 + halfCurrentWidth, y, 0, y - triangleHeight);
         }
 
         mv.pushStyle();
