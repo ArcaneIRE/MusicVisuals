@@ -71,9 +71,30 @@ public class MyVisual extends Visual {
         }
     }
 
+    public void spawnBirds(float elapsedTime) {
+        if (elapsedTime > 23f && flock == null) {
+            flock = new Bird[5];
+            flock[0] = new Bird(this, -10, 200);
+            flock[1] = new Bird(this, -40, 175);
+            flock[2] = new Bird(this, -40, 225);
+            flock[3] = new Bird(this, -70, 150);
+            flock[4] = new Bird(this, -70, 250);
+        }
+    }
+
+    public void renderBirds(float elapsedTime) {
+        if (elapsedTime > 23f) {
+            for (Bird bird : flock) {
+                bird.render();
+                bird.update();
+            }
+        }
+    }
+
     public void draw() {
         elapsedTime = getAudioPlayer().position() / 1000.0f; // Get elapsed time in seconds
 
+        spawnBirds(elapsedTime);
         updateBackgroundColor(elapsedTime);
         background(currentBackgroundColor);
         try {
@@ -96,10 +117,8 @@ public class MyVisual extends Visual {
             layer.update();
         }
 
-        for (Bird bird : flock) {
-            bird.render();
-            bird.update();
-        }
+        renderBirds(elapsedTime);
+
         river.render();
         river.update();
     }
