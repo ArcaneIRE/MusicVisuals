@@ -46,10 +46,9 @@ public class MyVisual extends Visual {
         } else if (key == '+') {
             int x = (int) random(width);
             int y = (int) random(height - 200) + 100;
-            int maxTriangles = (int) random(5, 10);
-            int treeWidth = maxTriangles * 10;
-            int triangleHeight = 15;
-            pineTrees.add(new PineTree(this, x, y, maxTriangles, treeWidth, triangleHeight));
+            int size = (int) random(5, 10);
+            int height = 15;
+            pineTrees.add(new PineTree(this, x, y, size, height));
         }
     }
 

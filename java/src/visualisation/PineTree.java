@@ -10,14 +10,14 @@ public class PineTree {
     int overlap;
     int greenShade;
 
-    public PineTree(MyVisual mv, int x, int y, int maxTriangles, int treeWidth, int triangleHeight) {
+    public PineTree(MyVisual mv, int x, int y, int size, int height) {
         this.mv = mv;
         this.x = x;
         this.y = y;
         this.numTriangles = 0;
-        this.maxTriangles = maxTriangles;
-        this.treeWidth = treeWidth;
-        this.triangleHeight = triangleHeight;
+        this.maxTriangles = size;
+        this.treeWidth = size * 10;
+        this.triangleHeight = height;
         this.overlap = 3;
         this.greenShade = (int) mv.random(35, 55);
     }
