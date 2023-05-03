@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class MyVisual extends Visual {
     private ArrayList<Layer> layers;
     ArrayList<PineTree> pineTrees;
+    Sun sun;
 
     public void settings() {
         size(1024, 500);
@@ -22,6 +23,8 @@ public class MyVisual extends Visual {
 
         // Call loadAudio to load an audio file to process
         loadAudio("primavera_short.mp3");
+        getAudioPlayer().cue(0);
+        getAudioPlayer().play();
 
         colorMode(HSB, 360, 100, 100);
         layers = new ArrayList<Layer>();
@@ -34,13 +37,12 @@ public class MyVisual extends Visual {
         layers.get(1).renderObjects.add(new Land(this, 0, 200, new Color(130, 80, 60)));
         layers.get(2).renderObjects.add(new Land(this, 0, 250, new Color(130, 80, 50)));
         pineTrees = new ArrayList<>();
+        sun = new Sun(this, width - 100, height / 10, 80, 24);
+
     }
 
     public void keyPressed() {
-        if (key == ' ') {
-            getAudioPlayer().cue(0);
-            getAudioPlayer().play();
-        } else if (key == '+') {
+        if (key == '+') {
             int x = (int) random(width);
             int y = (int) random(height - 200) + 100;
             int size = (int) random(5, 10);
@@ -72,5 +74,7 @@ public class MyVisual extends Visual {
             pineTree.grow();
             pineTree.render();
         }
+        sun.render();
+
     }
 }
