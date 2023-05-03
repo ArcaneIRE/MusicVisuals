@@ -74,7 +74,10 @@ public class MyVisual extends Visual {
             pineTree.grow();
             pineTree.render();
         }
+
+        pushStyle();
         sun.render();
+        popStyle();
 
     }
 }
