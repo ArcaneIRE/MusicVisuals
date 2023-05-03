@@ -46,7 +46,7 @@ public class Land extends RenderObject {
     }
 
     public void update() {
-        if (mv.random(0.1f) < mv.getSmoothedAmplitude()) {
+        if (mv.random(1f) < mv.getSmoothedAmplitude()) {
             spawnTree();
         }
     }
