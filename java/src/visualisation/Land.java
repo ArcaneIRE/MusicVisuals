@@ -8,10 +8,10 @@ public class Land extends RenderObject {
     PGraphics buffer;
     Color color;
 
-    public Land(PApplet p, float x, float y, Color color) {
-        super(p, x, y);
+    public Land(MyVisual mv, float x, float y, Color color) {
+        super(mv, x, y);
         this.color = color;
-        this.heightMap = new float[p.width];
+        this.heightMap = new float[mv.width];
 
         setup();
     }
@@ -19,12 +19,12 @@ public class Land extends RenderObject {
     private void setup() {
         generateHeightMap();
 
-        buffer = p.createGraphics(p.width, p.height);
+        buffer = mv.createGraphics(mv.width, mv.height);
         buffer.beginDraw();
         buffer.colorMode(PApplet.HSB, 360, 100, 100);
         buffer.stroke(color.hue, color.sat, color.bri);
         buffer.fill(color.hue, color.sat, color.bri);
-        buffer.rect(0, pos.y, p.width, p.height - pos.y);
+        buffer.rect(0, pos.y, mv.width, mv.height - pos.y);
         for (int i = 0; i < heightMap.length; i++) {
             buffer.line(i, pos.y - heightMap[i], i, pos.y);
         }
@@ -32,20 +32,20 @@ public class Land extends RenderObject {
     }
 
     public void render() {
-        p.image(buffer, 0, 0);
+        mv.image(buffer, 0, 0);
     }
 
     public void update() {
     }
 
-    float noiseOffset = p.random(0, 100);
+    float noiseOffset = mv.random(0, 100);
 
     public void generateHeightMap() {
         float degreeOfChange = 0.0012f;
-        float heightVariation = p.height / 4;
+        float heightVariation = mv.height / 4;
 
         for (int i = 0; i < heightMap.length; i++) {
-            float noiseValue = p.noise(noiseOffset);
+            float noiseValue = mv.noise(noiseOffset);
             float height = PApplet.map(noiseValue, 0, 1, 0, heightVariation);
             heightMap[i] = height;
             noiseOffset += degreeOfChange;

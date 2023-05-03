@@ -1,14 +1,13 @@
 package visualisation;
 
 import java.util.ArrayList;
-import processing.core.PApplet;
 
 public class Layer {
-    PApplet p;
+    MyVisual mv;
     public ArrayList<RenderObject> renderObjects = new ArrayList<RenderObject>();
 
-    public Layer(PApplet p) {
-        this.p = p;
+    public Layer(MyVisual mv) {
+        this.mv = mv;
     }
 
     public void draw() {

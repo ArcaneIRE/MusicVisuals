@@ -1,15 +1,14 @@
 package visualisation;
 
-import processing.core.PApplet;
 import processing.core.PVector;
 
 public abstract class RenderObject {
     PVector pos;
-    PApplet p;
+    MyVisual mv;
 
-    public RenderObject(PApplet p, float x, float y) {
+    public RenderObject(MyVisual mv, float x, float y) {
         this.pos = new PVector(x, y);
-        this.p = p;
+        this.mv = mv;
     }
 
     public abstract void update();
