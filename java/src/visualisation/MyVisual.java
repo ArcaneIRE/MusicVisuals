@@ -44,12 +44,13 @@ public class MyVisual extends Visual {
         layers.get(4).renderObjects.add(new Land(this, 0, 17 * (height / 20), new Color(130, 80, 30), 4));
 
         sun = new Sun(this, width - 300, height / 10, 80, 24);
+
         flock = new Bird[5];
-        flock[0] = new Bird(this, 400, 100);
-        flock[1] = new Bird(this, 350, 75);
-        flock[2] = new Bird(this, 350, 125);
-        flock[3] = new Bird(this, 300, 50);
-        flock[4] = new Bird(this, 300, 150);
+        flock[0] = new Bird(this, -400, 100);
+        flock[1] = new Bird(this, -450, 75);
+        flock[2] = new Bird(this, -450, 125);
+        flock[3] = new Bird(this, -500, 50);
+        flock[4] = new Bird(this, -500, 150);
 
         river = new River(this, 0, 18 * (height / 19), 40, 50);
     }
