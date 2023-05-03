@@ -11,11 +11,7 @@ public class MyVisual extends Visual {
     public void settings() {
         size(1024, 500);
 
-        // Use this to make fullscreen
-        // fullScreen();
-
-        // Use this to make fullscreen and use P3D for 3D graphics
-        // fullScreen(P3D, SPAN);
+        fullScreen();
     }
 
     public void setup() {
@@ -33,12 +29,12 @@ public class MyVisual extends Visual {
         layers.add(new Layer(this));
         layers.add(new Layer(this));
 
-        layers.get(0).renderObjects.add(new Land(this, 0, 150, new Color(130, 80, 70)));
-        layers.get(1).renderObjects.add(new Land(this, 0, 200, new Color(130, 80, 60)));
-        layers.get(2).renderObjects.add(new Land(this, 0, 250, new Color(130, 80, 50)));
+        layers.get(0).renderObjects.add(new Land(this, 0, 2 * (height / 5), new Color(130, 80, 70)));
+        layers.get(1).renderObjects.add(new Land(this, 0, 3 * (height / 5), new Color(130, 80, 60)));
+        layers.get(2).renderObjects.add(new Land(this, 0, 4 * (height / 5), new Color(130, 80, 50)));
         pineTrees = new ArrayList<>();
-        sun = new Sun(this, width - 100, height / 10, 80, 24);
 
+        sun = new Sun(this, width - 300, height / 10, 80, 24);
     }
 
     public void keyPressed() {
