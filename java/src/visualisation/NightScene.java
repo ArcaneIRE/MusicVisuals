@@ -22,7 +22,7 @@ public class NightScene {
         mv.currentBackgroundColor = mv.color(0, 0, 0); // Black background
         stars = new ArrayList<>();
         shootingStars = new CopyOnWriteArrayList<>();
-        moon = new Moon(mv);
+        moon = new Moon(mv, mv.width - 300, mv.height / 8, 50);
 
         for (int i = 0; i < 100; i++) {
             stars.add(new Star(mv, mv.width / 2, mv.height / 2));

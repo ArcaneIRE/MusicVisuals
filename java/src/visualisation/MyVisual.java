@@ -9,7 +9,7 @@ public class MyVisual extends Visual {
 
     float elapsedTime;
     float sunsetStartTime = 0.0f;
-    float sunsetDuration = 19.0f;
+    float sunsetDuration = 5.0f;
 
     public void settings() {
         size(1024, 500, P3D);
@@ -18,6 +18,8 @@ public class MyVisual extends Visual {
     }
 
     public void setup() {
+        g.ortho(); // Remove FOV distortion on 3d objects
+
         startMinim();
 
         // Call loadAudio to load an audio file to process
