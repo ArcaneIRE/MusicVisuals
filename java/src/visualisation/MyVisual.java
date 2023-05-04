@@ -65,5 +65,8 @@ public class MyVisual extends Visual {
             nightScene.render();
         }
 
+        if (!getAudioPlayer().isPlaying()) {
+            exit();
+        }
     }
 }
