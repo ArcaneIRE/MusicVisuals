@@ -5,14 +5,12 @@ import processing.core.PApplet;
 public class River extends RenderObject {
     int riverHeight;
     int segments;
-    float[] waveOffsets;
     float[] waveAmplitudes;
 
     public River(MyVisual mv, float x, float y, int riverHeight, int segments) {
         super(mv, x, y);
         this.riverHeight = riverHeight;
         this.segments = segments;
-        waveOffsets = new float[segments];
         waveAmplitudes = new float[segments];
     }
 
@@ -38,16 +36,15 @@ public class River extends RenderObject {
     }
 
     public void update() {
-        float noiseOffset = mv.random(0, 100);
+        if (mv.frameCount % 2 == 0) {
+            float noiseOffset = mv.random(0, 100);
 
-        for (int i = 0; i < segments; i++) {
-            float noiseValue = mv.noise(noiseOffset);
-            waveOffsets[i] = noiseValue;
-            noiseOffset += 0.1;
-        }
-
-        for (int i = 0; i < segments; i++) {
-            waveAmplitudes[i] = PApplet.map(waveOffsets[i], 0, 1, -riverHeight / 2, riverHeight / 2);
+            float noiseValue;
+            for (int i = 0; i < segments; i++) {
+                noiseValue = mv.noise(noiseOffset);
+                waveAmplitudes[i] = PApplet.map(noiseValue, 0, 1, -riverHeight / 2, riverHeight / 2);
+                noiseOffset += 0.1;
+            }
         }
     }
 }
