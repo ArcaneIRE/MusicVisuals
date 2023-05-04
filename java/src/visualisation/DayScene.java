@@ -92,4 +92,13 @@ public class DayScene {
         river.render();
         river.update();
     }
+
+    public ArrayList<Layer> getLayers() {
+        return layers;
+    }
+
+    public River getRiver() {
+        return river;
+    }
+
 }

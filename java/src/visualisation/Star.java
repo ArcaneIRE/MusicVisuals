@@ -1,6 +1,7 @@
 package visualisation;
 
 import processing.core.PApplet;
+import processing.core.PConstants;
 
 public class Star {
     private MyVisual mv;
@@ -17,11 +18,13 @@ public class Star {
     }
 
     public void render() {
+        mv.hint(PConstants.DISABLE_DEPTH_TEST);
         mv.pushMatrix();
         mv.translate(x, y);
         mv.stroke(255);
         mv.point(0, 0);
         mv.popMatrix();
+        mv.hint(PConstants.ENABLE_DEPTH_TEST);
     }
 
     public void update() {

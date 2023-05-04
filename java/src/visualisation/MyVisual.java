@@ -30,7 +30,7 @@ public class MyVisual extends Visual {
         colorMode(HSB, 360, 100, 100);
 
         dayScene = new DayScene(this);
-        nightScene = new NightScene(this);
+        nightScene = new NightScene(this, dayScene.getLayers(), dayScene.getRiver());
     }
 
     public void keyPressed() {

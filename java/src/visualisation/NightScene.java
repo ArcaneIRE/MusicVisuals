@@ -8,9 +8,13 @@ public class NightScene {
     private ArrayList<Star> stars;
     private CopyOnWriteArrayList<ShootingStar> shootingStars;
     private Moon moon;
+    private ArrayList<Layer> layers;
+    private River river;
 
-    public NightScene(MyVisual mv) {
+    public NightScene(MyVisual mv, ArrayList<Layer> layers, River river) {
         this.mv = mv;
+        this.layers = layers;
+        this.river = river;
         setup();
     }
 
@@ -52,5 +56,12 @@ public class NightScene {
         }
         moon.update(mv.getAmplitude());
         moon.render();
+
+        for (Layer layer : layers) {
+            layer.draw();
+            layer.update();
+        }
+        river.render();
+        river.update();
     }
 }
