@@ -7,6 +7,7 @@ public class NightScene {
     private MyVisual mv;
     private ArrayList<Star> stars;
     private CopyOnWriteArrayList<ShootingStar> shootingStars;
+    private Moon moon;
 
     public NightScene(MyVisual mv) {
         this.mv = mv;
@@ -21,10 +22,12 @@ public class NightScene {
         mv.currentBackgroundColor = mv.color(0, 0, 0); // Black background
         stars = new ArrayList<>();
         shootingStars = new CopyOnWriteArrayList<>();
+        moon = new Moon(mv);
 
         for (int i = 0; i < 100; i++) {
             stars.add(new Star(mv, mv.width / 2, mv.height / 2));
         }
+
     }
 
     public void spawnShootingStar() {
@@ -38,6 +41,7 @@ public class NightScene {
 
     public void render() {
         mv.background(mv.currentBackgroundColor);
+
         for (Star star : stars) {
             star.render();
             star.update();
@@ -46,5 +50,7 @@ public class NightScene {
             shootingStar.render();
             shootingStar.update();
         }
+        moon.update(mv.getAmplitude());
+        moon.render();
     }
 }

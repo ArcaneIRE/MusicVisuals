@@ -12,7 +12,7 @@ public class MyVisual extends Visual {
     float sunsetDuration = 19.0f;
 
     public void settings() {
-        size(1024, 500);
+        size(1024, 500, P3D);
 
         fullScreen();
     }
