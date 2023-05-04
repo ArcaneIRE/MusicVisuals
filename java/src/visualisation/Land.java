@@ -40,9 +40,6 @@ public class Land extends RenderObject {
         mv.image(buffer, 0, 0);
 
         for (PineTree tree : trees) {
-            if ((int) mv.random(800) == 0) {
-                tree.grow();
-            }
             tree.render();
         }
     }
@@ -50,6 +47,11 @@ public class Land extends RenderObject {
     public void update() {
         if (mv.random(4) < mv.getSmoothedAmplitude()) {
             spawnTree();
+        }
+        for (PineTree tree : trees) {
+            if (mv.random(16) < mv.getSmoothedAmplitude()) {
+                tree.grow();
+            }
         }
     }
 
