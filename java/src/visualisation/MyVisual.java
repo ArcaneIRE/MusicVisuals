@@ -5,6 +5,7 @@ import ie.tudublin.*;
 public class MyVisual extends Visual {
     int currentBackgroundColor;
     DayScene dayScene;
+    NightScene nightScene;
 
     float elapsedTime;
     float sunsetStartTime = 0.0f;
@@ -25,8 +26,9 @@ public class MyVisual extends Visual {
         getAudioPlayer().play();
 
         colorMode(HSB, 360, 100, 100);
-        dayScene = new DayScene(this);
 
+        dayScene = new DayScene(this);
+        nightScene = new NightScene(this);
     }
 
     public void keyPresed() {
@@ -49,6 +51,8 @@ public class MyVisual extends Visual {
 
         if (elapsedTime <= sunsetStartTime + sunsetDuration) {
             dayScene.render(elapsedTime);
+        } else {
+            nightScene.render();
         }
 
     }
