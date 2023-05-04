@@ -1,6 +1,7 @@
 package visualisation;
 
 import processing.core.PApplet;
+import processing.core.PConstants;
 
 public class Sun {
     MyVisual mv;
@@ -30,6 +31,8 @@ public class Sun {
         // Draw rays
         mv.pushMatrix();
         mv.translate(x, y);
+        mv.hint(PConstants.DISABLE_DEPTH_TEST); // Disable writing to the depth buffer
+
         int bands = mv.getBands().length;
         for (int i = 0; i < rayCount; i++) {
             float angle = PApplet.TWO_PI * i / rayCount;
@@ -47,6 +50,8 @@ public class Sun {
             mv.strokeWeight(2);
             mv.line(0, 0, rayX, rayY);
         }
+        mv.hint(PConstants.ENABLE_DEPTH_TEST); // Enable writing to the depth buffer
+
         mv.popStyle();
         mv.popMatrix();
     }
