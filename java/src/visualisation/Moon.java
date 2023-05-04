@@ -1,7 +1,5 @@
 package visualisation;
 
-import processing.core.PApplet;
-
 public class Moon {
     private MyVisual mv;
     private float rotation;
@@ -29,6 +27,6 @@ public class Moon {
     }
 
     public void update(float amplitude) {
-        rotation += PApplet.map(amplitude, 0, 1, 0.01f, 0.03f);
+        rotation += amplitude;
     }
 }

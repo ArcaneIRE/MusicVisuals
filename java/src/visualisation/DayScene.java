@@ -55,15 +55,17 @@ public class DayScene {
         }
     }
 
-    private void spawnBirds(float elapsedTime) {
-        if (elapsedTime > 0f && flock == null) {
-            flock = new Bird[5];
-            flock[0] = new Bird(mv, -10, 200);
-            flock[1] = new Bird(mv, -40, 175);
-            flock[2] = new Bird(mv, -40, 225);
-            flock[3] = new Bird(mv, -70, 150);
-            flock[4] = new Bird(mv, -70, 250);
+    public void spawnBirds() {
+        if (this.flock != null) {
+            return;
         }
+
+        flock = new Bird[5];
+        flock[0] = new Bird(mv, -10, 200);
+        flock[1] = new Bird(mv, -40, 175);
+        flock[2] = new Bird(mv, -40, 225);
+        flock[3] = new Bird(mv, -70, 150);
+        flock[4] = new Bird(mv, -70, 250);
     }
 
     private void renderBirds(float elapsedTime) {
@@ -86,8 +88,12 @@ public class DayScene {
             layer.update();
         }
 
-        spawnBirds(elapsedTime);
-        renderBirds(elapsedTime);
+        if (flock != null) {
+            renderBirds(elapsedTime);
+            if (flock[4].pos.x > mv.width) {
+                flock = null;
+            }
+        }
 
         river.render();
         river.update();

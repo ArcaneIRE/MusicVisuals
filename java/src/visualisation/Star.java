@@ -18,13 +18,16 @@ public class Star {
     }
 
     public void render() {
+        mv.pushStyle();
         mv.hint(PConstants.DISABLE_DEPTH_TEST);
         mv.pushMatrix();
         mv.translate(x, y);
         mv.stroke(255);
+        mv.strokeWeight(2);
         mv.point(0, 0);
         mv.popMatrix();
         mv.hint(PConstants.ENABLE_DEPTH_TEST);
+        mv.popStyle();
     }
 
     public void update() {

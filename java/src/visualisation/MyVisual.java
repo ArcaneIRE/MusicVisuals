@@ -8,13 +8,13 @@ public class MyVisual extends Visual {
     NightScene nightScene;
 
     float elapsedTime;
-    float sunsetStartTime = 0.0f;
-    float sunsetDuration = 5.0f;
+    float sunsetStartTime = 127.0f;
+    float sunsetDuration = 20.0f;
 
     public void settings() {
-        size(1024, 500, P3D);
+        // size(1024, 500, P3D);
 
-        fullScreen();
+        fullScreen(P3D);
     }
 
     public void setup() {
@@ -36,7 +36,11 @@ public class MyVisual extends Visual {
 
     public void keyPressed() {
         if (key == ' ') {
-            nightScene.spawnShootingStar();
+            if (elapsedTime < sunsetStartTime + sunsetDuration) {
+                dayScene.spawnBirds();
+            } else {
+                nightScene.spawnShootingStar();
+            }
         }
     }
 
