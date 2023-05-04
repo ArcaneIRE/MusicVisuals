@@ -31,6 +31,7 @@ public class MyVisual extends Visual {
 
         dayScene = new DayScene(this);
         nightScene = new NightScene(this, dayScene.getLayers(), dayScene.getRiver());
+        currentBackgroundColor = color(200, 60, 100);
     }
 
     public void keyPressed() {
