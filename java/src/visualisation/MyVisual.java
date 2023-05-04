@@ -121,5 +121,9 @@ public class MyVisual extends Visual {
 
         river.render();
         river.update();
+
+        if (!getAudioPlayer().isPlaying()) {
+            exit();
+        }
     }
 }
