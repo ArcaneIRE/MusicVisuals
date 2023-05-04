@@ -34,7 +34,7 @@ public class MyVisual extends Visual {
     }
 
     public void keyPressed() {
-        if (key == 's' || key == 'S') {
+        if (key == ' ') {
             nightScene.spawnShootingStar();
         }
     }
