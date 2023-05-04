@@ -12,7 +12,7 @@ public class MyVisual extends Visual {
     int currentBackgroundColor;
 
     float elapsedTime;
-    float sunsetStartTime = 128.0f;
+    float sunsetStartTime = 126.0f;
     float sunsetDuration = 27.0f;
 
     public void settings() {
