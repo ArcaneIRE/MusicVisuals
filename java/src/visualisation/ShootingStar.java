@@ -16,8 +16,10 @@ public class ShootingStar {
     }
 
     public void render() {
+        mv.pushStyle();
         mv.stroke(60, 100, 100); // yellow
         mv.line(position.x, position.y, position.x - velocity.x, position.y - velocity.y);
+        mv.popStyle();
     }
 
     public void update() {

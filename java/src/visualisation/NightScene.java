@@ -38,7 +38,7 @@ public class NightScene {
         float x = mv.random(mv.width);
         float y = 0;
         float vx = mv.random(-2, 2);
-        float vy = mv.random(2, 6);
+        float vy = mv.random(4, 8);
         ShootingStar shootingStar = new ShootingStar(mv, x, y, vx, vy);
         shootingStars.add(shootingStar);
     }

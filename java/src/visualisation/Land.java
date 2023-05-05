@@ -49,7 +49,7 @@ public class Land extends RenderObject {
             spawnTree();
         }
         for (PineTree tree : trees) {
-            if (mv.random(16) < mv.getSmoothedAmplitude()) {
+            if (mv.random(19 ) < mv.getSmoothedAmplitude()) {
                 tree.grow();
             }
         }
