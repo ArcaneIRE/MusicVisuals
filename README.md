@@ -22,7 +22,20 @@ This was accomplished using [Processsing](https://processing.org/) and its assoc
 
 ## How it works
 
-The layers of land are generated randomly using Perlin noise on each run, and filled in with trees according to the current intensity of song.
+The layers of land are generated randomly using Perlin noise on each run, and filled in with trees that spawn and grow according to the current intensity of song. The river, birds, moon and shooting stars also match the music in their own ways.
+
+```java
+        if (mv.random(4) < mv.getSmoothedAmplitude()) {
+            spawnTree();
+        }
+        for (PineTree tree : trees) {
+            if (mv.random(19 ) < mv.getSmoothedAmplitude()) {
+                tree.grow();
+            }
+        }
+````
+
+The rays of the sun are split into groups which react to different frequency bands.
 
 ## What I am most proud of in the assignment
 
