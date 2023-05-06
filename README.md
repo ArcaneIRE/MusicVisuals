@@ -13,6 +13,8 @@ This was accomplished using [Processsing](https://processing.org/) and its assoc
 |David Corcoran|D22126022|
 |Kai Reid|C21475961|
 
+## [Watch Video](https://youtu.be/r2uKTI_O_jY)
+
 ## Installation / How to Run
 
 1. Ensure you have [JDK 17](https://www.oracle.com/ie/java/technologies/downloads/) or newer installed
